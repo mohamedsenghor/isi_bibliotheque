@@ -16,7 +16,7 @@ Ce projet implémente un système complet de gestion de bibliothèque utilisant 
 ## Architecture du projet
 
 ```text
-EXAMEN_XML/
+./
 ├── data/
 │   └── v2/
 │       ├── bibliotheque.xml

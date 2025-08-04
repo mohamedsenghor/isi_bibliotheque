@@ -243,7 +243,7 @@ basex -b utilisateur-id="U004" -b livre-isbn="L006" queries/pret/emprunter_livre
 
 1. Ouvrir la base `isi_bibliotheque`
 2. Dans l'éditeur, copier le code XQuery
-3. Utiliser **Variables** → **External Variables** pour définir les paramètres
+3. Utiliser **Variables** → **External Variables** pour définir les paramètres (une icône en forme de **$**)
 4. **Query** → **Execute**
 
 ### 3. Options de formatage

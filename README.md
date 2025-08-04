@@ -259,46 +259,97 @@ basex -b utilisateur-id="U004" -b livre-isbn="L006" queries/pret/emprunter_livre
 #### `create_livre.xq`
 
 Création d'un nouveau livre avec validation XSD.
-**Variables** : `isbn`, `titre`, `auteur`, `genre`, `annee`, `disponible`, `prix`
+
+**Variables** :
+
+- `isbn` : Identifiant unique du livre (International Standard Book Number)
+- `titre` : Titre du livre
+- `auteur` : Nom de l’auteur du livre
+- `genre` : Genre littéraire du livre (ex : Roman, Science-Fiction, etc.)
+- `annee` : Année de publication du livre
+- `disponible` : Indique si le livre est disponible à l’emprunt (`true` ou `false`)
+- `prix` : Prix du livre (doit être supérieur à 0)
 
 #### `est_emprunte.xq`
 
 Module fonction vérifiant le statut d'emprunt d'un livre.
+
 **Fonction** : `livre:est-emprunte($isbn)`
 
 #### `rechercher_livres.xq`
 
 Recherche multi-critères avec pagination.
-**Variables** : `isbn`, `titre`, `auteur`, `genre`, `annee-min`, `annee-max`, `disponible`, `prix-min`, `prix-max`, `page`, `page-size`
+**Variables** :
+
+- `isbn` : Identifiant unique du livre (ISBN)
+- `titre` : Titre du livre (recherche partielle possible)
+- `auteur` : Nom de l’auteur (recherche partielle possible)
+- `genre` : Genre littéraire (ex : Roman, Science-Fiction, etc.)
+- `annee-min` : Année de publication minimale (inclusif)
+- `annee-max` : Année de publication maximale (inclusif)
+- `disponible` : Filtre sur la disponibilité (`true` ou `false`)
+- `prix-min` : Prix minimum du livre (inclusif)
+- `prix-max` : Prix maximum du livre (inclusif)
+- `page` : Numéro de page pour la pagination (entier, optionnel)
+- `page-size` : Nombre de résultats par page (entier, optionnel)
 
 ### Module `utilisateur`
 
 #### `create_utilisateur.xq`
 
 Création utilisateur avec validation email unique.
-**Variables** : `id`, `nom`, `prenom`, `email`
+
+**Variables** :
+
+- `id` : Identifiant unique de l'utilisateur
+- `nom` : Nom de famille de l'utilisateur (recherche partielle possible)
+- `prenom` : Prénom de l'utilisateur (recherche partielle possible)
+- `email` : Adresse email de l'utilisateur (recherche exacte ou partielle)
+- `page` : Numéro de page pour la pagination (entier, optionnel)
+- `page-size` : Nombre de résultats par page (entier, optionnel)
 
 #### `rechercher_utilisateurs.xq`
 
 Recherche utilisateurs multi-critères.
-**Variables** : `id`, `nom`, `prenom`, `email`, `page`, `page-size`
+
+**Variables** :
+
+- `id` : Identifiant unique de l'utilisateur (recherche exacte ou partielle)
+- `nom` : Nom de famille de l'utilisateur (recherche partielle possible)
+- `prenom` : Prénom de l'utilisateur (recherche partielle possible)
+- `email` : Adresse email de l'utilisateur (recherche exacte ou partielle)
+- `page` : Numéro de page pour la pagination (entier, optionnel)
+- `page-size` : Nombre de résultats par page (entier, optionnel)
 
 ### Module `pret`
 
 #### `emprunter_livre.xq`
 
 Enregistrement d'un emprunt avec vérifications.
-**Variables** : `livre-isbn`, `utilisateur-id`, `duree-jours`
+
+**Variables** :
+
+- `livre-isbn` : Identifiant unique du livre à emprunter (ISBN)
+- `utilisateur-id` : Identifiant unique de l'utilisateur qui effectue l'emprunt
+- `duree-jours` : Durée de l'emprunt en jours (entier, optionnel ; valeur par défaut si non précisé)
 
 #### `retourner_livre.xq`
 
 Traitement du retour d'un livre.
-**Variables** : `pret-id`
+
+**Variables** :
+
+- `pret-id` : Identifiant du prêt
 
 #### `prets_en_retard.xq`
 
 Liste des prêts en retard.
-**Variables** : `jours-retard-min`, `page`, `page-size`
+
+**Variables** :
+
+- `jours-retard-min` : Nombre minimal de jours de retard pour filtrer les prêts (entier, optionnel)
+- `page` : Numéro de page pour la pagination des résultats (entier, optionnel)
+- `page-size` : Nombre de résultats par page pour la pagination (entier, optionnel)
 
 ## Exemples d'utilisation
 

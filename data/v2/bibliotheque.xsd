@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:element name="bibliotheque">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="livres">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="livre" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="titre" type="xs:string" />
+                                        <xs:element name="auteur" type="xs:string" />
+                                        <xs:element name="genre" type="xs:string" />
+                                        <xs:element name="annee" type="xs:gYear" minOccurs="0" />
+                                        <xs:element name="disponible" type="xs:boolean"
+                                            minOccurs="0" />
+                                        <xs:element name="prix">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:decimal">
+                                                    <xs:minExclusive value="0" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="isbn" type="xs:string" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="utilisateurs">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="utilisateur" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="nom" type="xs:string" />
+                                        <xs:element name="prenom" type="xs:string" />
+                                        <xs:element name="email" type="xs:string" />
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:string" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+
+                    <xs:unique name="emailUnique">
+                        <xs:selector xpath="utilisateur" />
+                        <xs:field xpath="email" />
+                    </xs:unique>
+                </xs:element>
+
+                <xs:element name="prets">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="pret" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="livreRef" type="xs:string" />
+                                        <xs:element name="utilisateurRef" type="xs:string" />
+                                        <xs:element name="datePret" type="xs:date" />
+                                        <xs:element name="dateRetour" type="xs:date" minOccurs="0"
+                                            nillable="true" />
+                                        <xs:element name="dateRetourPrevue" type="xs:date"
+                                            minOccurs="0" nillable="true" />
+
+                                        <xs:element name="dateRetourEffectif" type="xs:date" minOccurs="0"
+                                            nillable="true" />
+                                        <xs:element name="statut" minOccurs="0">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:enumeration value="en cours" />
+                                                    <xs:enumeration value="retourné" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:string" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+
+                    <xs:unique name="pretIdUnique">
+                        <xs:selector xpath="pret" />
+                        <xs:field xpath="@id" />
+                    </xs:unique>
+                </xs:element>
+
+
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

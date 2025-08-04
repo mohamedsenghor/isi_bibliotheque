@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?xml-model href="bibliotheque.xsd"?>
+<bibliotheque>
+  <livres>
+    <livre isbn="L004">
+      <titre>The New Continent</titre>
+      <auteur>Black</auteur>
+      <genre>Science-Fiction</genre>
+      <annee>2025</annee>
+      <disponible>true</disponible>
+      <prix>25.99</prix>
+    </livre>
+    <livre isbn="L001">
+      <titre>Le Petit Prince</titre>
+      <auteur>Antoine de Saint-Exupéry</auteur>
+      <genre>Conte philosophique</genre>
+      <annee>1943</annee>
+      <disponible>true</disponible>
+      <prix>10.99</prix>
+    </livre>
+    <livre isbn="L002">
+      <titre>1984</titre>
+      <auteur>George Orwell</auteur>
+      <genre>Science-fiction</genre>
+      <annee>1943</annee>
+      <disponible>false</disponible>
+      <prix>15.50</prix>
+    </livre>
+    <livre isbn="L003">
+      <titre>L'Étranger</titre>
+      <auteur>Albert Camus</auteur>
+      <genre>Roman</genre>
+      <annee>1942</annee>
+      <disponible>true</disponible>
+      <prix>12.75</prix>
+    </livre>
+  </livres>
+  <utilisateurs>
+    <utilisateur id="U001">
+      <nom>Dupont</nom>
+      <prenom>Jean</prenom>
+      <email>jean.dupont@example.com</email>
+    </utilisateur>
+    <utilisateur id="U002">
+      <nom>Martin</nom>
+      <prenom>Claire</prenom>
+      <email>claire.martin@example.com</email>
+    </utilisateur>
+    <utilisateur id="U003">
+      <nom>Nguyen</nom>
+      <prenom>Thierry</prenom>
+      <email>thierry.nguyen@example.com</email>
+    </utilisateur>
+    <utilisateur id="U004">
+      <nom>Doe</nom>
+      <prenom>John</prenom>
+      <email>john.doe@example.com</email>
+    </utilisateur>
+  </utilisateurs>
+  <prets>
+    <pret id="P001">
+      <livreRef>L001</livreRef>
+      <utilisateurRef>U001</utilisateurRef>
+      <datePret>2025-07-15</datePret>
+      <dateRetour>2025-08-01</dateRetour>
+    </pret>
+    <pret id="P002">
+      <livreRef>L003</livreRef>
+      <utilisateurRef>U003</utilisateurRef>
+      <datePret>2025-08-01</datePret>
+      <dateRetour xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </pret>
+    <pret id="P3">
+      <livreRef>L002</livreRef>
+      <utilisateurRef>U003</utilisateurRef>
+      <datePret>2025-08-04Z</datePret>
+      <dateRetourPrevue>2025-08-19Z</dateRetourPrevue>
+      <dateRetourEffectif xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <statut>en cours</statut>
+    </pret>
+  </prets>
+</bibliotheque>

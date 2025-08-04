@@ -1,4 +1,4 @@
-# Système de Gestion de Bibliothèque avec BaseX
+# Système de Gestion de Bibliothèque avec XQuery
 
 Ce projet implémente un système complet de gestion de bibliothèque utilisant BaseX (moteur de base de données XML) et XQuery pour les opérations CRUD sur les livres, utilisateurs et prêts.
 

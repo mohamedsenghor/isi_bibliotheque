@@ -363,26 +363,97 @@ basex queries/setup/create_database.xq
 
 2. **Ajouter un livre** :
 
+**Ligne de commande** :
+
 ```bash
-basex -w -b isbn="L005" -b titre="Dune" -b auteur="Frank Herbert" -b genre="Science-Fiction" -b annee="1965" -b prix="18.99" queries/livre/create_livre.xq
+basex -w -b isbn="L005" -b titre="Dune" -b auteur="Frank Herbert" -b genre="Science-Fiction" -b annee="1965" -b disponible="true" -b prix="18.99" queries/livre/create_livre.xq
+```
+
+**Résultat** :
+
+```xml
+<resultat status="success">
+  <message>Livre créé avec succès</message>
+  <livre isbn="L005">
+    <titre>Dune</titre>
+    <auteur>Frank Herbert</auteur>
+    <genre>Science-Fiction</genre>
+    <annee>1965</annee>
+    <disponible>true</disponible>
+    <prix>18.99</prix>
+  </livre>
+</resultat>
 ```
 
 3. **Créer un utilisateur** :
+
+**Ligne de commande** :
 
 ```bash
 basex -w -b id="U005" -b nom="Smith" -b prenom="Alice" -b email="alice.smith@example.com" queries/utilisateur/create_utilisateur.xq
 ```
 
+**Résultat** :
+
+```xml
+<resultat status="success">
+  <message>Utilisateur créé avec succès</message>
+  <utilisateur id="U005">
+    <nom>Smith</nom>
+    <prenom>Alice</prenom>
+    <email>alice.smith@example.com</email>
+  </utilisateur>
+</resultat>
+```
+
 4. **Emprunter le livre** :
+
+**Ligne de commande** :
 
 ```bash
 basex -w -b utilisateur-id="U005" -b livre-isbn="L005" queries/pret/emprunter_livre.xq
 ```
 
+**Résultat** :
+
+```xml
+<resultat status="success">
+  <message>Prêt enregistré avec succès</message>
+  <pret id="P001">
+    <livre>Dune</livre>
+    <utilisateur>Alice Smith</utilisateur>
+    <datePret>2024-06-10</datePret>
+    <dateRetourPrevue>2024-06-24</dateRetourPrevue>
+  </pret>
+</resultat>
+```
+
 5. **Vérifier les prêts en cours** :
+
+**Ligne de commande** :
 
 ```bash
 basex queries/pret/prets_en_cours.xq | xq
+```
+
+**Résultat** :
+
+```xml
+<resultats page="1" page-size="10" total="3">
+  <pret id="P3">
+    <livre isbn="L005">
+      <titre>Dune</titre>
+      <auteur>Frank Herbert</auteur>
+  </livre>
+    <utilisateur id="U005">
+      <nom>Smith</nom>
+      <prenom>Alice</prenom>
+    </utilisateur>
+    <datePret>2025-08-04Z</datePret>
+    <dateRetourPrevue>2025-08-19Z</dateRetourPrevue>
+    <joursRetard>0</joursRetard>
+  </pret>
+</resultats>
 ```
 
 ### Requêtes de recherche
